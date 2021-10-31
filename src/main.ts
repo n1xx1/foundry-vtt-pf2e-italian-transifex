@@ -234,7 +234,11 @@ async function handleActor(
       if (!itemTypes.includes(item.type))
         throw new Error(`unknown item type: ${item.type}`);
 
-      if (ignoredItemTypes.includes(item.type)) continue;
+      if (
+        ignoredItemTypes.includes(item.type) ||
+        (item.type == "spell" && !item.name.includes("("))
+      )
+        continue;
 
       const found =
         itemEntries[item.name.toLowerCase()]?.find(
