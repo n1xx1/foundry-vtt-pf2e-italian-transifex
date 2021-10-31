@@ -19,5 +19,6 @@ jobs:
           files: |
             out/en.json
             out/compendium/*.json
+          tag_name: release
           body_path: "tmp/changes.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
