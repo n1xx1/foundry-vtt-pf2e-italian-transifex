@@ -1,0 +1,313 @@
+{
+  "label": "Hazards (CRB)",
+  "mapping": {
+    "name": "name",
+    "items": {
+      "path": "items",
+      "converter": "fromPack"
+    },
+    "tokenName": {
+      "path": "token.name",
+      "converter": "name"
+    },
+    "hazardDescription": "data.details.description",
+    "hazardDisable": "data.details.disable",
+    "hazardReset": "data.details.reset",
+    "hazardRoutine": "data.details.routine"
+  },
+  "entries": {
+    "Web Lurker Deadfall": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>A web tripwire lets loose a bundle of boulders that fall on all targets within a 10-foot square.</p>",
+      "hazardDisable": "<p>Survival (trained) or Thievery (expert) DC 20 to rearrange the webbing.</p>"
+    },
+    "Sportlebore": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>A sportlebore hides amid the victuals on a plate of food or within a pack of trail rations.</p>",
+      "hazardDisable": "<p>A creature that notices the sportlebore can remove it from the food it is hidden within automatically as an Interact action. </p>"
+    },
+    "Fireball Rune": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>An invisible rune creates an invisible, spherical magical sensor with a 20-foot radius.</p>",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-label=\"Erase the Rune DC\" data-pf2-dc=\"22\" data-pf2-show-dc=\"gm\">Thievery</span> (expert) to erase the rune without triggering the sensor, or <em>@Compendium[pf2e.spells-srd.9HpwDN4MYQJnW0LG]{Dispel Magic}</em> (3rd level; counteract DC 20) to counteract the rune</p>"
+    },
+    "Electric Latch Rune": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "An invisible rune imprinted on a door latch releases a powerful electric discharge.",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-label=\"Scratch Out the Rune DC\" data-pf2-dc=\"20\" data-pf2-show-dc=\"gm\">Thievery</span> (expert) to scratch out the rune without allowing electricity to flow, or <em>dispel magic</em> (2nd level; counteract DC 18) to counteract the rune</p>"
+    },
+    "Slamming Door": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Pressure-sensitive panels in the floor connect to a stone slab hidden in a hallway's ceiling.",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-label=\"Disable Floor Panel DC\" data-pf2-dc=\"15\" data-pf2-show-dc=\"gm\">Thievery</span> (trained) on the floor panels before the slab falls</p>"
+    },
+    "Darkside Mirror": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A magic mirror replaces characters with evil mirror duplicates from another dimension.",
+      "hazardDisable": "Thievery DC 34 (legendary) to retrieve a creature from the other dimension within 10 minutes of the switch (possible only if their mirror duplicate is dead), Thievery DC 39 (master) to permanently disable the mirror once all mirror duplicates are dead, or <i>dispel magic </i>(7th level; counteract DC 32) to counteract the mirror for 1 minute and prevent additional replacements during that time",
+      "hazardReset": "The mirror is always ready to absorb creatures into the other dimension. Ten minutes after a creature is sucked into the mirror, if an ally doesn't rescue the creature with Thievery, it reaches the other dimension, where it might be captured or killed. In the mirror dimension, it counts as a mirror duplicate, so the denizens of the other dimension can't destroy the mirror on their side while the absorbed creature is there. These dimensions are alternate realities, not planes, so even rituals like <i>plane shift</i> can't reach them.",
+      "hazardRoutine": "(1 action) The mirror absorbs another reflected creature into the mirror and replaces it with a mirror duplicate. Mirror duplicates attack on their own initiative, using the same statistics as the original creature, but with an evil alignment (changing only abilities that shift with the alignment change). A mirror duplicate can spend 3 actions in contact with the mirror to return to its original dimension and release the creature it duplicated, but most mirror duplicates prefer not to."
+    },
+    "Titanic Flytrap": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "On the surface, a titanic flytrap appears to be a patch of the more common flytrap plant, but beneath murky waters it hides a far larger set of jaws, reaching 10 feet across and reinforced with woody branches and lined with paralytic hairs.",
+      "hazardDisable": "DC 22 Survival (trained) to mislead the flytrap's sense of weight and pressure",
+      "hazardReset": "1 hour (or longer, after a large meal)"
+    },
+    "Scythe Blades": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Two blades, each hidden in a 15-foot-long ceiling groove, are both connected to a trip wire.",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-label=\"Disable a Blade DC\" data-pf2-dc=\"21\" data-pf2-show-dc=\"gm\">Thievery</span> (trained) to disable each blade</p>",
+      "hazardReset": "The trap resets after 15 minutes."
+    },
+    "Second Chance": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Powerful warding magic tied to an object or location tries to regress the ages of a creature and its allies.",
+      "hazardDisable": "Thievery DC 46 (legendary) to take apart the spell one tiny piece at a time, with eyes closed, while recalling every vivid life memory in order, starting from the earliest memory"
+    },
+    "Frozen Moment": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Warding magic attempts to trap intruders or would-be thieves in a disrupted time flow.",
+      "hazardDisable": "Thievery DC 38 (legendary) to rapidly disassemble the spell's myriad components in a single blink of an eye; or <i>dispel magic </i>(9th level; counteract DC 36) to counteract the trap before it triggers or to counteract the effect on one creature after the trap is triggered"
+    },
+    "Hampering Web": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Semitransparent sheets of webbing span the entryway, ready to capture small insects or hamper larger creatures that pass through.",
+      "hazardDisable": "DC 17 Survival (trained) to dislodge it"
+    },
+    "Yellow Mold": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Poisonous mold spores assault nearby creatures.",
+      "hazardDisable": "Survival DC 26 (expert) to remove the mold without triggering the spores"
+    },
+    "Telekinetic Swarm Trap": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Three innocuous decorations instilled with telekinetic magic pull objects and pieces of the room itself into spinning clouds of debris that attack all creatures in the room.",
+      "hazardDisable": "Thievery DC 27 (expert) to take apart a telekinetic cloud, Thievery DC 32 (master) to disable each telekinetic decoration, or <i>dispel magic </i>(6th level; counteract DC 30) to counteract each telekinetic decoration",
+      "hazardReset": "The trap deactivates and resets 10 minutes after it has no target creatures (because the creatures either moved too far away or died).",
+      "hazardRoutine": "(9 actions) Each decoration uses 3 of the trap's actions each turn, and the trap loses 3 actions each turn for every decoration that is disabled. A decoration uses its first action to move its cloud of objects up to 200 feet, its second action to make the objects Strike, and its third action to add more objects to the cloud, increasing its damage by 1d12 (to a maximum of 4d12+10). If a decoration's cloud is already at maximum damage, it does nothing with its third action.</p>\n<p>If a decoration's cloud has been destroyed, the decoration instead spends its first action to create a new cloud of objects inside the room (using the starting damage value) and then its second and third actions to have the cloud move and attack."
+    },
+    "Hidden Pit": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>A wooden trapdoor covers a pit that's 10 feet square and 20 feet deep.</p>",
+      "hazardDisable": "<span data-pf2-check=\"thievery\" data-pf2-label=\"Remove the Trapdoor DC\" data-pf2-dc=\"12\" data-pf2-show-dc=\"gm\">Thievery</span> to remove the trapdoor",
+      "hazardReset": "Creatures can still fall into the trap, but the trapdoor must be reset manually for the trap to become hidden again."
+    },
+    "Armageddon Orb": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A roiling red orb, forged from a drop of the god Rovagug's blood, rains fire from the sky when a specified condition is met.",
+      "hazardDisable": "Thievery DC 48 (legendary) to imbue thieves' tools with aspects representing Asmodeus and Sarenrae and use them to drain away the orb's power over 10 minutes; the character attempting this check takes 5 fire damage each round until the orb is depleted"
+    },
+    "Quicksand": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A 15-foot-wide patch of water and sand attempts to submerge creatures that step onto it.",
+      "hazardDisable": "Survival DC 18 (trained) to disturb the surface",
+      "hazardReset": "The hazard still submerges anyone who walks in, but the surface doesn't become hidden again until it settles over the course of 24 hours.",
+      "hazardRoutine": "(1 action) On its initiative, the quicksand pulls down each creature within it. A creature that was submerged up to its waist becomes submerged up to its neck, and a creature that was submerged up to its neck is pulled under and has to hold its breath to avoid suffocation.</p>\n<p>A creature in the quicksand can attempt a DC 20 Athletics check to Swim to either raise itself by one step if it's submerged to its neck or worse, or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step.</p>\n<p>A creature that Swims out of the quicksand escapes the hazard and is prone in a space adjacent to the quicksand patch. Other creatures can Aid the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 20 Athletics check, with the same results as if the creature attempted the check."
+    },
+    "Wheel Of Misery": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "An ornate wheel set into a wall-divided into six segments with colored runes on each-is controlled by a magical sensor that detects any creature within 100 feet in front of it.",
+      "hazardDisable": "Thievery DC 26 (expert) on the wheel to stop it from spinning, Thievery DC 22 (master) to erase each rune, or <i>dispel magic </i>(4th level; counteract DC 22) to counteract each rune",
+      "hazardReset": "The trap deactivates and resets if 1 minute passes without any creature moving within range of its sensor.",
+      "hazardRoutine": "(2 actions) On its initiative, the trap uses its first action to spin, then stops. Roll 1d6 to determine which segment is topmost when the wheel stops spinning. The wheel uses its second action to replicate the spell listed for that segment (3rd level, DC 24, spell attack roll +14). This spell's target is centered on or otherwise includes the nearest creature in the area. This increases the spell's range to 100 feet if necessary. Any spell cast by this trap is arcane.</p>\n<p><b>1</b>@Compendium[pf2e.spells-srd.o4lRVTwSxnOOn5vl]{Sleep}</p>\n<p><b>2</b>@Compendium[pf2e.spells-srd.DCQHaLrYXMI37dvW]{Paralyze}</p>\n<p><b>3</b>@Compendium[pf2e.spells-srd.9AAkVUCwF6WVNNY2]{Lightning Bolt} (100-foot line)</p>\n<p><b>4</b>@Compendium[pf2e.spells-srd.VosLNn2M8S7JH67D]{Blindness}</p>\n<p><b>5</b>@Compendium[pf2e.spells-srd.f8hRqLJaxBVhF1u0]{Acid Arrow}</i></p>\n<p><b>6</b>@Compendium[pf2e.spells-srd.J7Y7tl0bbdz7TcCc]{Ray of Enfeeblement}"
+    },
+    "Polymorph Trap": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A Druidic glyph tries to transforms a trespasser into an animal.",
+      "hazardDisable": "Thievery DC 32 (master) to drain the glyph's power harmlessly, or <i>dispel magic </i>(6th level; counteract DC 30) to counteract the glyph"
+    },
+    "Spinning Blade Pillar": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A metal pole with three razor-sharp spinning blades is hidden in the floor, connected to trigger plates in up to eight floor tiles and a hidden control panel within 30 feet.",
+      "hazardDisable": "Thievery DC 21 (trained) twice on the pillar, or Thievery DC 19 (expert) once on the control panel deactivates the whole trap. Breaking the control panel prevents anyone from disabling the trap using the control panel and prevents the trap from deactivating automatically (see Reset below).",
+      "hazardReset": "The trap deactivates and resets after 1 minute.",
+      "hazardRoutine": "(3 actions) The trap uses its first action to make a spinning blade Strike against each adjacent creature, its second action to move straight in a random direction (roll 1d4 to determine the direction), and its third action to make a spinning blade Strike against each adjacent creature. This trap doesn't take a multiple attack penalty."
+    },
+    "Vorpal Executioner": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A wickedly sharp saw blade descends and travels along grooves in a complex path throughout the room, attempting to decapitate everyone within.",
+      "hazardDisable": "Thievery DC 41 (expert) at four different junctions to jam all the saw blade's possible paths, preventing it from traveling through the room",
+      "hazardReset": "The trap resets over the course of the round and can be triggered again 1 round later."
+    },
+    "Green Slime": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A caustic green film clings to the ceiling above, watching for prey to pass beneath it.",
+      "hazardDisable": "DC 33 Survival (expert) to carefully peel the slime off the ceiling without touching it",
+      "hazardReset": "1 hour, as the slime feasts and then slowly creeps back up to the ceiling"
+    },
+    "Eternal Flame": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A raging spectral inferno arises out of thin air, strengthening all undead creatures within its area. This haunt most often arises from the charred remains of a group of three people who burned to death, whether in a terrible accident or a deliberate execution, and their unavenged souls burn with rage. ",
+      "hazardDisable": "DC 27 Diplomacy (expert) to temporarily calm the rage of one of the three spirits, or DC 30 Religion (trained) to exorcise one of the spirits; three total successes are required to disable the haunt",
+      "hazardReset": "The flames cease 1 minute after all living creatures leave the area, but after 1 hour, the anger and pain simmer up and the haunt is ready to trigger again.",
+      "hazardRoutine": "(1 action) Phantom flames rage across the haunted area, dealing 4d6 fire damage to each living creature within the area (DC 23 basic Will save). Undead creatures in the area are infused with flames for the following round. They gain the fire trait and immunity to fire, and all their attacks deal an additional 1d6 fire damage. Objects in the area are unaffected."
+    },
+    "Drowning Pit": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A trapdoor covers a 10-foot-square pit that's 30 feet deep and has 5 feet of water at the bottom. Four water spouts in the walls connect to hidden water tanks. Each water spout extends out of a different wall, 6 inches from the top of the pit.",
+      "hazardDisable": "Thievery DC 18 (trained) to seal each water spout, Thievery DC 22 (trained) to open the trapdoor, or Athletics DC 22 to Force Open the trapdoor",
+      "hazardReset": "The trap can be reset if the door is manually reengaged and the water tanks refilled; it can be reset without draining the pit, but doing so renders it less effective.",
+      "hazardRoutine": "(4 actions) The trap loses 1 action each turn for each disabled water spout. On each of the trap's actions, a spout pours water, increasing the depth of the water by 5 feet. Once the pit is full of water, the pit stops using actions, but creatures in the pit begin drowning."
+    },
+    "Web Lurker Noose": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>Discreet webbing at throat level snags a creature that walks into it.</p>",
+      "hazardDisable": "<p><span data-pf2-check=\"survival\" data-pf2-dc=\"18\" data-pf2-traits=\"mechanical,trap\" data-pf2-label=\"Rearrange the Webbing DC\" data-pf2-show-dc=\"gm\">Survival</span> (trained) or <span data-pf2-check=\"thievery\" data-pf2-dc=\"18\" data-pf2-traits=\"mechanical,trap\" data-pf2-label=\"Rearrange the Webbing DC\" data-pf2-show-dc=\"gm\">Thievery</span> (expert) to rearrange the webbing.</p>"
+    },
+    "Brown Mold": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>This unassuming fungus leeches heat out of the air.</p>",
+      "hazardDisable": "<p><span data-pf2-check=\"survival\" data-pf2-dc=\"18\" data-pf2-traits=\"environmental,fungus\" data-pf2-label=\"Remove Brown Mold DC\" data-pf2-show-dc=\"gm\">Survival</span> (trained) to safely remove the mold</p>",
+      "hazardReset": "<p>After expanding, the brown mold can't grow again for 1 day.</p>"
+    },
+    "Spectral Reflection": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "The reflection in the mirror subtly twists and distorts, its expression taking on an unnerving sneer of malice.",
+      "hazardDisable": "DC 23 Religion (trained) to exorcise the spirit, or DC 23 Thievery (trained) to quickly cover the mirror",
+      "hazardReset": "The haunt re-forms after 1 minute, manifesting in any mirror within its infused area (see Special below)."
+    },
+    "Snowfall": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Loose snow and ice have built up on a high surface, such as a tree branch or a rooftop. Its grip on the surface is tenuous, and it is likely to fall if the surface moves. ",
+      "hazardDisable": "DC 19 Survival (trained) to safely dislodge the snow, or deal any amount of fire damage to destroy the hazard without triggering it"
+    },
+    "Dance Of Death": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "An eerie orchestra compels all who hear it to dance until they collapse from exhaustion.",
+      "hazardDisable": "DC 42 Intimidation (expert) three times to frighten dancers and spectral musicians alike away from participating in the deadly performance, DC 40 Performance (master) twice to produce a tune discordant enough to disrupt the compulsion, or DC 42 Religion (master) three times to banish the spirits with prayers",
+      "hazardReset": "The eerie orchestra spends an hour retuning its phantasmal instruments, after which it is ready to begin its routine again.",
+      "hazardRoutine": "(1 action, auditory, enchantment, incapacitation, occult) The orchestra performs a raucous tune, compelling all creatures that can hear it to spend actions dancing. Each round, creature must attempt a DC 37 Will save; the results of this save modify the number of actions that the creature must spend dancing each round. If this would cause the creature to spend more actions dancing than it can use on its turn, the creature takes 10d6 damage (or double that on a critical failure) from moving faster than its body can manage.</p>\n<p><b>Critical Success</b> The creature decreases the number of actions it must spend dancing by 1.</p>\n<p><b>Success</b> No effect.</p>\n<p><b>Failure</b> The creature increases the actions it must spend dancing by 1.</p>\n<p><b>Critical Failure</b> The creature increases the actions it must spend dancing by 2."
+    },
+    "Ghostly Choir": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>A choir of lost souls rises out of the floor, singing an eerie chant that terrifies its listeners and buffets their bodies with walls of sound.</p>",
+      "hazardDisable": "<p><span data-pf2-check=\"performance\" data-pf2-traits=\"haunt\" data-pf2-label=\"Sing a Different Tune DC\" data-pf2-dc=\"28\" data-pf2-show-dc=\"gm\">Performance</span> (trained) to disrupt the song's resonance with another tune or <span data-pf2-check=\"religion\" data-pf2-traits=\"haunt\" data-pf2-label=\"Ritually Silence the Haunt DC\" data-pf2-dc=\"28\" data-pf2-show-dc=\"gm\">Religion</span> (trained) to ritually silence the spirits</p>"
+    },
+    "Flensing Blades": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A whirling tornado of spectrally propelled glass and steel slices whatever it touches to ribbons.",
+      "hazardDisable": "DC 35 Thievery (master) to precisely adjust the blades so that they destroy each other, or DC 38 Religion (expert) to weaken the haunt; four successes are required to disable it",
+      "hazardReset": "The haunt draws jagged shards back into its area over the course of an hour, after which it can trigger again.",
+      "hazardRoutine": "(3 actions) The tornado of blades uses 3 actions to move, traveling up to 30 feet with each action and dealing 2d10+10 slashing damage. Each creature in its path must attempt a DC 33 Reflex save.</p>\n<p><b>Critical Success</b> The creature is unaffected.</p>\n<p><b>Success</b> The creature takes half damage.</p>\n<p><b>Failure</b> The creature takes full damage plus [[/r 1d10 #persistent bleed]] @Compendium[pf2e.conditionitems.lDVqvLKA6eF3Df60]{Persistent Bleed Damage}.</p>\n<p><b>Critical Failure</b> The creature takes double damage and [[/r 1d10 #persistent bleed]] @Compendium[pf2e.conditionitems.lDVqvLKA6eF3Df60]{Persistent Bleed Damage}. It also becomes wounded 1 (or increases its wounded value by 1, if it is already wounded).</p>\n<p>Each successful check to disable this hazard reduces the haunt's movement by 30 feet, and the fourth success disables it completely."
+    },
+    "Plummeting Doom": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Four vengeful spirits grab interlopers and toss them off the edge of a nearby 120-foot-tall cliff.",
+      "hazardDisable": "DC 40 Athletics (trained) to push back so forcefully that the spirits fear being thrown off the cliff, or DC 40 Religion (expert) to temporarily seal the spirits away",
+      "hazardReset": "1 hour"
+    },
+    "Treacherous Scree": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "The footing on this sloped ground appears to be stable at first glance, but the tiny rocks that cover it are loosely packed and prone to slipping.",
+      "hazardDisable": "DC 20 Survival (trained) to navigate a safe path"
+    },
+    "Jealous Abjurer": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A robe-clad spirit rises out of the floor, pointing an accusing finger.",
+      "hazardDisable": "DC 36 Arcana, Nature, Occultism, or Religion (master) to convince the spirit that the target's magical knowledge is too great to be trifled with",
+      "hazardReset": "1 hour"
+    },
+    "Poisoned Dart Gallery": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Countless holes to launch poison darts from line a long hallway with a hidden control panel on the far end.",
+      "hazardDisable": "Thievery DC 21 (expert) on the control panel deactivates the trap.",
+      "hazardReset": "The trap deactivates and resets after 1 minute.",
+      "hazardRoutine": "(1 action) The trap launches one dart against every creature in the gallery as 1 action. Because it launches darts continuously, the trap can also use the Continuous Barrage free action (see below) to launch darts at each creature during that creature's turn."
+    },
+    "Perilous Flash Flood": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Whether made up of water rushing through the streets that sweeps up dangerous debris along the way or a less natural substance bursting free of its container, this relentless flood batters everything in its path. ",
+      "hazardDisable": "three DC 35 Athletics, Crafting, or Survival checks to move or construct barricades strong enough to create a shelter from the flood. While this creates a safe place to stand, creatures outside of the barricaded area may still be in danger depending on the nature and the source of the flood.",
+      "hazardRoutine": "(1 action) The flood advances forward 60 feet, crashing into all creatures within its area. Each creature must attempt a DC 30 Fortitude save as the floodwaters pummel them and pull them downstream. The amount and type of damage dealt are based on the nature of the flood, and certain types of floods impose additional effects. The turbulent waters mean creatures within the area of the flood must attempt a DC 20 Athletics check to Swim in order to move, and those who do not succeed at a check to Swim each round may drown.</p>\n<p><b>Critical Success</b> The creature takes no damage.</p>\n<p><b>Success</b> The creature takes half damage.</p>\n<p><b>Failure</b> The creature takes full damage and is moved 10 feet along with the water.</p>\n<p><b>Critical Failure</b> The creature takes double damage and is moved 20 feet along with the water.</p>\n<p>• <b>Acidic Runoff</b> This caustic flood dissolves flesh as it moves, dealing 1d12 bludgeoning damage and 1d12+8 acid damage. Additionally, it deals [[/r 2d6 #persistent acid]] @Compendium[pf2e.conditionitems.lDVqvLKA6eF3Df60]{Persistent Acid Damage} to creatures who critically fail their Fortitude saves.</p>\n<p>• <b>Battering Waves</b> This flood of rushing water deals 2d12+10 bludgeoning damage.</p>\n<p>• <b>Repulsive Refuse</b> This flood has picked up tainted or disease-ridden objects like sewer runoff or rotting food. It deals 2d12+8 bludgeoning damage. Each creature exposed to the flood must attempt a DC 29 Fortitude save, becoming sickened 1 on a failure or sickened 2 on a critical failure. Additionally, creatures who come into contact with the flood waters are exposed to filth fever (DC 20 Fortitude, <i>Bestiary</i> 258).</p>\n<p>• <b>Sharp Debris</b> The waters have picked up various objects, some of which are particularly sharp. The flood deals 1d12 bludgeoning damage and 1d12+12 piercing damage.</p>\n<p>• <b>Sticky Goo</b> The substance is particularly sticky. It deals 2d12+6 bludgeoning damage. Additionally, each creature in the flood must attempt a DC 29 Reflex save at the beginning of their turn each round. On a failed saving throw, they take a -10-foot circumstance penalty to all their Speeds for 1 round. On a critical failure, they are instead immobilized for 1 round."
+    },
+    "Pharaoh's Ward": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>A curse is imbued on an entryway's threshold.</p>",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-label=\"Remove the Lintel DC\" data-pf2-dc=\"27\" data-pf2-show-dc=\"gm\">Thievery</span> (master) to painstakingly remove the lintel without triggering the magic, or <em>@Compendium[pf2e.spells-srd.9HpwDN4MYQJnW0LG]{Dispel Magic}</em> (4th level; counteract DC 25) to counteract the rune</p>",
+      "hazardReset": "<p>The trap resets when the door is shut.</p>"
+    },
+    "Banshee's Symphony": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A magically contagious <i>wail of the banshee</i> spell is trapped in the larynx of an invisible, mummified elf.",
+      "hazardDisable": "Thievery DC 42 (master) to pierce the invisible larynx so precisely that the magic releases in a trickle before the trap activates, Thievery DC 44 (legendary) three times to deconstruct the larynx while the trap is active in such a way that it tears the spell apart, or spell DC 38 (9th level) to counteract the <i>wail of the banshee</i> before the trap activates",
+      "hazardReset": "The trap ends when the trap is unable to make a creature scream (usually because no creature failed its save on the previous turn or because all creatures have critically succeeded in the past). It then resets over 24 hours, as a new scream builds up in the mummified larynx.",
+      "hazardRoutine": "(1 action) The trap uses its action to force one random creature that failed its save against <em>wail of the banshee</em> last turn to emit a <em>wail of the banshee</em> with the same statistics as the initial one. The creature wails even if it is dead or unable to speak, no matter how far away from the trap it is. Unlike a casting of the spell, the drained condition from this trap's <em>wail of the banshee</em> spells increases the targets' drained condition values. A creature that critically succeeds at any of its saves can still be affected by the trap on future rounds, but can't be forced to wail by the trap.</p>"
+    },
+    "Summoning Rune": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A cloud of invisible magical sensors in a 10-foot radius surrounds an invisible wall or floor rune the size of the creature to be summoned.",
+      "hazardDisable": "Acrobatics DC 15 to approach without triggering the trap followed by Thievery DC 17 (trained) to erase the rune, or <i>dispel magic </i>(1st level; counteract DC 15) to counteract the rune",
+      "hazardReset": "The trap resets each day at dawn."
+    },
+    "Lava Flume Tube": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Four gated channels carved into stone allow lava to flow into a 15-foot-tall room; the floor can withdraw to allow the hardened lava to fall into a chamber beneath.",
+      "hazardDisable": "Thievery DC 29 (expert) to block a channel, or Thievery DC 31 (master) to release the floor latch and escape to the chamber below",
+      "hazardReset": "The trap deactivates and resets after 1 hour by withdrawing the floor, cracking and dumping the hardened lava (and any creatures trapped inside) into the chamber. Creatures fall 40 feet, taking falling damage (typically 17 bludgeoning damage).",
+      "hazardRoutine": "(4 actions) The trap loses 1 action per disabled channel each turn. On each action, a different channel spews lava, dealing 4d6 fire damage to each creature within 10 feet of the channel (DC 27 basic Reflex save), and increasing the depth of the lava in the room by 1 foot (4 feet per round if all the channels are active).</p>\n<p>A creature that starts its turn in lava takes 8d6 fire damage and is immobilized until it Escapes the hardening lava (DC 27). The creature might suffocate if covered in lava.</p>\n<p>Lava from the previous round hardens fully at the start of the trap's turn, effectively raising the floor of the room. Once the room is full of lava, the trap stops taking actions, but creatures in the room remain stuck until the floor opens and the trap resets."
+    },
+    "Confounding Betrayal": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "Allies appear to shed their disguises and reveal themselves to be malevolent monsters.",
+      "hazardDisable": "DC 28 Deception (expert) twice to confound the haunt with your own deceptions, or DC 28 Occultism (trained) twice to create a ward against the haunt's mental influence ",
+      "hazardReset": "The haunt deactivates 1 minute after all creatures leave the area but resets immediately thereafter.",
+      "hazardRoutine": "(1 action, illusion, incapacitation, occult) The haunt continues to confound victims' senses and inspire them to commit violence against each other. Each creature in the haunt's area must attempt a DC 26 Will save.</p>\n<p><b>Critical Success</b> The creature is unaffected and temporarily immune for 1 minute.</p>\n<p><b>Success</b> The creature is unaffected.</p>\n<p><b>Failure</b> The creature is confused for 1 round.</p>\n<p><b>Critical Failure</b> The creature is confused for 1 minute."
+    },
+    "Grasp Of The Damned": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "These desperate spirits are the echoes of people who committed great atrocities in the name of an evil god. Now, they are left with only the knowledge that their souls have been damned, and the unwavering belief that they can better their fate by providing powerful sacrifices for their fiendish masters.",
+      "hazardDisable": "DC 46 Religion (master) to inspire a deity to intervene and counteract the ritual",
+      "hazardReset": "1 day"
+    },
+    "Bloodthirsty Urge": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "An object haunted by the echoes of a vicious mind attempts to kill someone who comes near.",
+      "hazardDisable": "Religion DC 29 (master) to exorcise the spirit or Diplomacy DC 31 (expert) to talk it down"
+    },
+    "Hammer Of Forbiddance": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "An enormous hammer at an edifice's entrance swings down in an attempt to damage a creature entering an area, push it back, and prevent it from going any further.",
+      "hazardDisable": "Thievery DC 28 (expert) once on the hammer itself and once on its joint to prevent the hammer from swinging",
+      "hazardReset": "The trap resets over the course of the round, and is ready to swing again 1 round later."
+    },
+    "Hallucination Powder Trap": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A tube of hallucinogenic powder armed with a miniature explosive is connected to a doorknob or similar latch.",
+      "hazardDisable": "Thievery DC 26 (expert) to disable the hammer that strikes the percussion cap"
+    },
+    "Poisoned Lock": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A spring-loaded, poisoned spine is hidden near the keyhole of a lock. Disabling or breaking the trap does not disable or break the lock.",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-traits=\"mechanical,trap\" data-pf2-label=\"Disarm Lock Trap DC\" data-pf2-dc=\"17\" data-pf2-show-dc=\"gm\">Thievery</span> (trained) on the spring mechanism</p>"
+    },
+    "Shrieker": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>This human-sized purple mushroom emits a piercing shriek when disturbed.</p>",
+      "hazardDisable": "<p><span data-pf2-check=\"survival\" data-pf2-traits=\"environmental,fungus\" data-pf2-label=\"Disable Air Sac DC\" data-pf2-dc=\"18\" data-pf2-show-dc=\"gm\">Survival</span> to carefully approach and cut the mushroom's air sac without triggering the shrieker</p>",
+      "hazardReset": "<p>1 minute</p>"
+    },
+    "Spear Launcher": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A wall socket loaded with a spear connects to a floor tile in one 5-foot square.",
+      "hazardDisable": "<p><span data-pf2-check=\"thievery\" data-pf2-label=\"Disable Thievery DC\" data-pf2-dc=\"18\" data-pf2-show-dc=\"gm\">Thievery</span> (trained) on the floor tile or wall socket</p>"
+    },
+    "Gravehall Trap": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "<p>When a living creature crosses the midpoint of the trapped tunnel, necromantic magic partially animates the corpses buried in the walls and ceiling.</p>",
+      "hazardDisable": "<p>Thievery DC 24 (expert) to disrupt the magical trigger before the hazard rolls initiative, or Religion DC 18 (trained) to overwhelm the area with positive energy and prevent the hazard from using its routine for 1 round; on the third successful Religion check, the necromantic energies are disrupted and the hazard is destroyed.</p>",
+      "hazardRoutine": "<p><span class=\"pf2-icon\">1</span> Undead fists assail all creatures in the hall, dealing [[/r {4d6}[bludgeoning]]]{4d6 bludgeoning damage}. Creatures in the hall must attempt a DC 21 Reflex save.</p>\n<hr />\n<p><strong>Critical Success</strong> The target is unaffected.</p>\n<p><strong>Success</strong> The target takes half damage.</p>\n<p><strong>Failure</strong> The target takes full damage, and its Speeds are reduced by 10 feet (to a minimum of 5 feet) for 1 round.</p>\n<p><strong>Critical Failure</strong> The target takes double damage and is @compendium[pf2e.conditionitems.Immobilized]{Immobilized} for 1 round.</p>"
+    },
+    "Bottomless Pit": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "An iron trapdoor covers an infinitely deep 10-foot-square pit.",
+      "hazardDisable": "Thievery DC 28 (trained) to remove the trapdoor",
+      "hazardReset": "The trap still causes creatures to fall forever if they fall in, but the trapdoor must be reset manually for the trap to become hidden again."
+    },
+    "Planar Rift": {
+      "name": "Hazards (CRB)",
+      "hazardDescription": "A rift attempts to draw creatures into another plane (the GM chooses the specific plane).",
+      "hazardDisable": "Thievery DC 33 (master) to assemble a rift seal using objects strongly grounded to your plane, or <i>dispel magic </i>(7th level; counteract DC 31) to counteract the rift"
+    }
+  }
+}

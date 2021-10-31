@@ -1,0 +1,149 @@
+{
+  "label": "Familiar Abilities",
+  "mapping": {
+    "name": "name",
+    "description": "data.description.value"
+  },
+  "entries": {
+    "Darkvision": {
+      "name": "Darkvision",
+      "description": "<p>It gains darkvision.</p>"
+    },
+    "Independent": {
+      "name": "Independent",
+      "description": "<p>In an encounter, if you don't Command your familiar, it still gains 1 action each round. Typically, you still decide how it spends that action, but, the GM might determine that your familiar chooses its own tactics rather than performing your preferred action.</p>"
+    },
+    "Purify Air": {
+      "name": "Purify Air",
+      "description": "<p>Prequisites @Compendium[pf2e.feats-srd.baz18CdB13DVMHV9]{Leshy Familiar Secrets}</p>\n<p>Your familiar recycles air, providing enough oxygen for a Medium creature in areas with stale air, such as a sealed chamber or extradimensional space. If the leshy is within the area of an inhaled poison effect or an effect that relies on smell, creatures within a 15-foot emanation from the leshy gain a +2 circumstance bonus to their saving throws against the effect.</p>"
+    },
+    "Plant Form": {
+      "name": "Plant Form",
+      "description": "<p>Your plant familiar can change shape as a single action, transforming into a Tiny plant of a type roughly similar to the familiar's nature. This otherwise uses the effects of <em>tree shape</em>. You must have a familiar with the plant trait, such as a leshy, to select this ability.</p>"
+    },
+    "Damage Avoidance: Will": {
+      "name": "Damage Avoidance: Will",
+      "description": "<p>It takes no damage when it succeeds at Will saves; this doesn't prevent effects other than damage.</p>"
+    },
+    "Lab Assistant": {
+      "name": "Lab Assistant",
+      "description": "<p>It can use your Quick Alchemy action. You must have Quick Alchemy, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this.</p>"
+    },
+    "Poison Reservoir": {
+      "name": "Poison Reservoir",
+      "description": "<p>Your homunculus familiar has a reservoir for poison, allowing it to apply an injury poison to an adjacent ally's exposed weapon with a single Interact action. You must supply the poison and instill it into this reservoir using two consecutive Interact actions. You must have a homunculus familiar to select this ability.</p>"
+    },
+    "Accompanist": {
+      "name": "Accompanist",
+      "description": "<p>Your familiar helps you perform. Whenever you attempt a Performance check, if your familiar is nearby and can act, it accompanies you with chirps, claps, or its own miniature instrument. This grants you a +1 circumstance bonus, or +2 if you're a master in Performance.</p>"
+    },
+    "Valet": {
+      "name": "Valet",
+      "description": "<p>You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar Interact to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way.</p>"
+    },
+    "Amphibious": {
+      "name": "Amphibious",
+      "description": "<p>It gains a swim Speed of 25 feet (or Speed of 25 feet if it already has a swim Speed).</p>"
+    },
+    "Fast Movement: Land": {
+      "name": "Fast Movement: Land",
+      "description": "<p>Increase the familiar's land Speed from 25 feet to 40 feet.</p>"
+    },
+    "Mask Freeze": {
+      "name": "Mask Freeze",
+      "description": "<p>When in mask form, your familiar can hide its obvious supernatural qualities to pass as a simple, unassuming mask. It doesn't need to Impersonate to fool a passing glance, and it gains a +4 circumstance bonus to its Deception DC against an active observer Seeking or otherwise studying it.</p>"
+    },
+    "Resistance": {
+      "name": "Resistance",
+      "description": "<p>Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level against the chosen damage types.</p>"
+    },
+    "Scent": {
+      "name": "Scent",
+      "description": "<p>It gains scent (imprecise, 30 feet).</p>"
+    },
+    "Master's Form": {
+      "name": "Master's Form",
+      "description": "<p>Your familiar can change shape as a single action, transforming into a humanoid of your ancestry with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat's eyes or a serpent's tongue. This form is always the same each time it uses this ability. This otherwise uses the effects of <em>humanoid form</em>, except the change is purely cosmetic. It only appears humanoid and gains no new capabilities. Your familiar must have the manual dexterity and speech abilities to select this.</p>"
+    },
+    "Damage Avoidance: Reflex": {
+      "name": "Damage Avoidance: Reflex",
+      "description": "<p>It takes no damage when it succeeds at Reflex saves; this doesn't prevent effects other than damage.</p>"
+    },
+    "Grasping Tendrils": {
+      "name": "Grasping Tendrils",
+      "description": "<p>Prequisites @Compendium[pf2e.feats-srd.baz18CdB13DVMHV9]{Leshy Familiar Secrets}</p>\n<p>Your familiar can extend vines or similar tendrils, increasing its reach to 15 feet.</p>"
+    },
+    "Tough": {
+      "name": "Tough",
+      "description": "<p>Your familiar's maximum Hit Points increase by 2 per level.</p>"
+    },
+    "Focused Rejuvenation": {
+      "name": "Focused Rejuvenation",
+      "description": "<p>When you Refocus, you generate magical energy that heals your familiar. Your familiar regains 1 Hit Point per level whenever you Refocus.</p>"
+    },
+    "Verdant Burst": {
+      "name": "Verdant Burst",
+      "description": "<p>Prequisites @Compendium[pf2e.feats-srd.baz18CdB13DVMHV9]{Leshy Familiar Secrets}</p>\n<p>When your familiar dies,it releases its primal energy to cast the 3-action version of @Compendium[pf2e.spells-srd.rfZpqmj0AIIdkVIs]{Heal}, heightened to a level 1 lower than your highest-level spell slot. The <em>heal</em> spell gains a status bonus equal to twice the spell's level to the Hit Points it restores to plants. You must be able to cast 2nd-level spells using spell slots to select this familiar ability.</p>"
+    },
+    "Fast Movement: Climb": {
+      "name": "Fast Movement: Climb",
+      "description": "<p>Increase the familiar's climb Speed from 25 feet to 40 feet.</p>"
+    },
+    "Fast Movement: Fly": {
+      "name": "Fast Movement: Fly",
+      "description": "<p>Increase the familiar's fly Speed from 25 feet to 40 feet.</p>"
+    },
+    "Touch Telepathy": {
+      "name": "Touch Telepathy",
+      "description": "<p>Your familiar can telepathically communicate with you via touch. If it also has the speech ability, it can telepathically communicate via touch with any creature if they share a language.</p>"
+    },
+    "Flier": {
+      "name": "Flier",
+      "description": "<p>It gains a fly Speed of 25 feet.</p>"
+    },
+    "Spellcasting": {
+      "name": "Spellcasting",
+      "description": "<p>Choose a spell in your repertoire or that you prepared today that is at least 5 levels lower than your highest-level spell slot. Your familiar can Cast that Spell once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-level spells using spell slots to select this ability.</p>"
+    },
+    "Manual Dexterity": {
+      "name": "Manual Dexterity",
+      "description": "<p>It can use up to two of its limbs as if they were hands to use manipulate actions.</p>"
+    },
+    "Climber": {
+      "name": "Climber",
+      "description": "<p>It gains a climb Speed of 25 feet.</p>"
+    },
+    "Skilled": {
+      "name": "Skilled",
+      "description": "<p>Choose a skill other than Acrobatics or Stealth. Your familiar's modifier for that skill is equal to your level plus your key spellcasting ability modifier, rather than just your level. You can select this ability repeatedly, choosing a different skill each time.</p>"
+    },
+    "Damage Avoidance: Fortitude": {
+      "name": "Damage Avoidance: Fortitude",
+      "description": "<p>It takes no damage when it succeeds at Fortitude saves; this doesn't prevent effects other than damage.</p>"
+    },
+    "Kinspeech": {
+      "name": "Kinspeech",
+      "description": "<p>It can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the speech ability, and you must be at least 6th level.</p>"
+    },
+    "Toolbearer": {
+      "name": "Toolbearer",
+      "description": "<p>Your familiar can carry a set of tools of up to light Bulk. So long as your familiar is adjacent to you, you can draw and replace the tools as part of the action that uses them as if you were wearing them. Your familiar must have the manual dexterity ability to select this.</p>"
+    },
+    "Burrower": {
+      "name": "Burrower",
+      "description": "<p>It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes.</p>"
+    },
+    "Partner in Crime": {
+      "name": "Partner in Crime",
+      "description": "<p>Your familiar is your criminal associate. Despite being a minion, your familiar gains 1 reaction at the start of its turns, which it can use only to Aid you on a Deception or Thievery skill check (it still has to prepare to help you as normal for the Aid reaction). It automatically succeeds at its check to Aid you with those skills or automatically critically succeeds if you're a master of the skill in question.</p>"
+    },
+    "Fast Movement: Swim": {
+      "name": "Fast Movement: Swim",
+      "description": "<p>Increase the familiar's swim Speed from 25 feet to 40 feet.</p>"
+    },
+    "Speech": {
+      "name": "Speech",
+      "description": "<p>It understands and speaks a language you know.</p>"
+    }
+  }
+}

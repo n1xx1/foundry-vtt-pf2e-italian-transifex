@@ -63,7 +63,7 @@ interface EntryNPC extends BaseEntry {
   items: EntryItem[];
   data: {
     details: {
-      flavorText: string;
+      publicNotes: string;
     };
   };
 }
@@ -227,7 +227,7 @@ async function handleActor(
     hasMonsters = true;
     const el: any = (out.entries[entry.name] = {
       name: entry.name,
-      description: entry.data.details.flavorText,
+      description: entry.data.details.publicNotes,
     });
 
     for (const item of entry.items) {
@@ -266,7 +266,7 @@ async function handleActor(
     out.mapping!.hazardRoutine = "data.details.routine";
   }
   if (hasMonsters) {
-    out.mapping!.description = "data.details.flavorText";
+    out.mapping!.description = "data.details.publicNotes";
   }
 
   const outData = JSON.stringify(out, null, 2);
