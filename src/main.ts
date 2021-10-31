@@ -368,6 +368,11 @@ async function main() {
       throw new Error(`not implemented: ${pack.entity}`);
     }
   }
+
+  await fsWriteFile(
+    "tmp/changes.txt",
+    `updated to version ${manifest.version}`
+  );
 }
 
 main().then(console.log);

@@ -1,0 +1,23 @@
+name: Publish new files
+on: workflow_dispatch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+          cache: "yarn"
+      - run: yarn install
+      - run: yarn run build
+      - run: node tmp/main.js
+      - uses: softprops/action-gh-release@v1
+        with:
+          name: Release
+          files: |
+            out/en.json
+            out/compendium/*.json
+          body_path: "tmp/changes.txt"
+          token: ${{ secrets.GITHUB_TOKEN }}
