@@ -108,6 +108,7 @@ const itemTypes = [
   "action",
   "armor",
   "attack",
+  "backpack",
   "condition",
   "consumable",
   "effect",
@@ -239,29 +240,29 @@ async function main() {
 
   const itemEntries = _.groupBy(
     allPacks
-      .filter((x) => x.entity == "Item")
+      .filter((x) => x.type == "Item")
       .flatMap((x) => x.entries as EntryItem[]),
     (x) => x.name.toLowerCase()
   );
 
   for (const pack of allPacks) {
-    if (pack.entity === "Actor") {
+    if (pack.type === "Actor") {
       await handleActor(
         pack.name,
         pack.label,
         pack.entries as EntryActor[],
         itemEntries
       );
-    } else if (pack.entity === "Item") {
+    } else if (pack.type === "Item") {
       await handleItem(pack.name, pack.label, pack.entries as EntryItem[]);
-    } else if (pack.entity === "JournalEntry") {
+    } else if (pack.type === "JournalEntry") {
       await handleJournalEntry(
         pack.name,
         pack.label,
         pack.entries as EntryJournalEntry[]
       );
     } else {
-      throw new Error(`not implemented: ${pack.entity}`);
+      throw new Error(`not implemented: ${pack.type}`);
     }
   }
 

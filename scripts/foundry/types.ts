@@ -15,7 +15,7 @@ export interface FoundrySystemManifest {
     system: string;
     module?: string;
     path: string;
-    entity: string;
+    type: "Actor" | "Item" | "JournalEntry" | "Macro" | "RollTable";
     private?: boolean;
     folder?: string;
   }[];
