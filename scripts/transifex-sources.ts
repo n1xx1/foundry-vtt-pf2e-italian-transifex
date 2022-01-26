@@ -1,102 +1,25 @@
-import { createWriteStream as fsCreateWriteStream } from "fs";
 import {
   mkdir as fsMkdir,
   rm as fsRm,
   writeFile as fsWriteFile,
 } from "fs/promises";
-import { join as pathJoin } from "path/posix";
-import fetch from "node-fetch";
-import { Open as unzipperOpen } from "unzipper";
-import { FoundrySystemManifest } from "./types";
 import _ from "lodash";
+import { join as pathJoin } from "path/posix";
+import { downloadFile, readSystemZip } from "./foundry/system";
+import { downloadManifest } from "./foundry/system";
+import { EntryActor, EntryItem, EntryJournalEntry } from "./foundry/types";
 
 const baseUrl =
   "https://gitlab.com/hooking/foundry-vtt---pathfinder-2e/-/jobs/artifacts/master/raw";
-
-async function downloadManifest(): Promise<FoundrySystemManifest> {
-  const resp = await fetch(`${baseUrl}/system.json?job=build`);
-  const data = await resp.text();
-  return JSON.parse(data);
-}
-
-async function downloadFile(url: string, path: string) {
-  const resp = await fetch(url);
-  const fileStream = fsCreateWriteStream(path);
-  await new Promise((ful, rej) => {
-    resp.body!.pipe(fileStream);
-    resp.body!.on("error", rej);
-    resp.body!.on("finish", ful);
-  });
-}
-
-function parseJsonStream<T>(stream: Buffer) {
-  return stream
-    .toString("utf-8")
-    .split("\n")
-    .filter((x) => x)
-    .map((p) => JSON.parse(p) as T);
-}
-
-type Entry = EntryHazard | EntryNPC | EntryItem | EntryJournalEntry;
-
-type EntryActor = EntryHazard | EntryNPC;
-
-interface BaseEntry {
-  _id: string;
-  name: string;
-}
-
-interface EntryHazard extends BaseEntry {
-  type: "hazard";
-  data: {
-    details: {
-      description: string;
-      disable: string;
-      reset: string;
-      routine: string;
-    };
-  };
-}
-
-interface EntryNPC extends BaseEntry {
-  type: "npc";
-  items: EntryItem[];
-  data: {
-    details: {
-      publicNotes: string;
-    };
-  };
-}
-
-type EntryItem = EntryItemGeneric | EntryItemSpell;
-
-interface EntryItemGeneric extends BaseEntry {
-  type: "action" | "condition" | "weapon" | "melee" | "ranged" | "lore";
-  data: {
-    description: {
-      value: string;
-    };
-  };
-}
-
-interface EntryItemSpell extends BaseEntry {
-  type: "spell";
-  data: {
-    description: { value: string };
-    materials: { value: string };
-    target: { value: string };
-  };
-}
-
-interface EntryJournalEntry extends BaseEntry {
-  content: string;
-}
 
 interface Compendium {
   label: string;
   mapping?: Record<string, string | { path: string; converter: string }>;
   entries: Record<string, any>;
 }
+
+const rangeRegex = /^(?:touch|planetary|[\d.,]+ (?:feet|miles?))$/;
+const timeRegex = /^(?:1|2|3|reaction|free|[\d.,]+ (?:minutes?|days?|hours?))$/;
 
 async function handleItem(id: string, label: string, entries: EntryItem[]) {
   const out: Compendium = {
@@ -125,12 +48,32 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
       if (entry.data.target?.value) {
         el.target = entry.data.target?.value;
       }
+      if (entry.data.range?.value) {
+        const val = entry.data.range?.value.toLowerCase();
+        if (!val.match(rangeRegex)) {
+          el.range = entry.data.range?.value;
+        }
+      }
+      if (entry.data.time?.value) {
+        const val = entry.data.time?.value.toLowerCase();
+        if (!val.match(timeRegex)) {
+          el.time = entry.data.time?.value;
+        }
+      }
     }
   }
 
   if (hasSpells) {
     out.mapping!.materials = "data.materials.value";
     out.mapping!.target = "data.target.value";
+    out.mapping!.range = {
+      path: "data.range.value",
+      converter: "convertRange",
+    };
+    out.mapping!.time = {
+      path: "data.time.value",
+      converter: "convertTime",
+    };
   }
 
   const outData = JSON.stringify(out, null, 2);
@@ -279,71 +222,20 @@ async function handleActor(
   await fsWriteFile(pathJoin("out/compendium", id + ".json"), outData);
 }
 
-const enabledPacks = [
-  "actionspf2e",
-  "age-of-ashes-bestiary",
-  "ancestries",
-  "ancestryfeatures",
-  "archetypes",
-  "backgrounds",
-  "bestiary-ability-glossary-srd",
-  "bestiary-effects",
-  "bestiary-family-ability-glossary",
-  "boons-and-curses",
-  "classes",
-  "classfeatures",
-  "conditionitems",
-  "consumable-effects",
-  "deities",
-  "equipment-effects",
-  "equipment-srd",
-  "fall-of-plaguestone-bestiary",
-  "familiar-abilities",
-  "feat-effects",
-  "feats-srd",
-  "feature-effects",
-  "gmg-srd",
-  "hazards",
-  "npc-gallery",
-  "pathfinder-bestiary-2",
-  "pathfinder-bestiary",
-  "spell-effects",
-  "spells-srd",
-  "vehicles",
-];
-
-async function main() {
+async function downloadFiles() {
   const manifest = await downloadManifest();
-
   await fsMkdir("out").catch((e) => Promise.resolve());
   await fsMkdir("tmp").catch((e) => Promise.resolve());
   await fsRm("tmp/system.zip").catch((e) => Promise.resolve());
   await downloadFile(manifest.download, "tmp/system.zip");
+  return manifest;
+}
 
-  const directory = await unzipperOpen.file("tmp/system.zip");
-  const files = Object.fromEntries(directory.files.map((f) => [f.path, f]));
-
-  const langFile = await files[
-    pathJoin(".", "pf2e", "lang", "en.json")
-  ].buffer();
-  const langData = JSON.parse(langFile.toString("utf-8"));
+async function main() {
+  const manifest = await downloadFiles();
+  const [allPacks, langData] = await readSystemZip(manifest);
 
   await fsWriteFile("out/en.json", JSON.stringify(langData, null, 2));
-
-  const allPacks = await Promise.all(
-    manifest.packs
-      .map((pack) => {
-        const path = pathJoin(".", "pf2e", pack.path);
-        const file = files[path];
-        return [pack, file] as const;
-      })
-      .filter(([pack, file]) => file && enabledPacks.includes(pack.name))
-      .map(async ([pack, file]) => {
-        const stream = await file.buffer();
-        const data = parseJsonStream<Entry>(stream);
-        return { ...pack, entries: data };
-      })
-  );
 
   const itemEntries = _.groupBy(
     allPacks

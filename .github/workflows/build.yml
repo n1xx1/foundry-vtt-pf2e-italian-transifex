@@ -15,8 +15,7 @@ jobs:
           node-version: "16"
           cache: "yarn"
       - run: yarn install
-      - run: yarn run build
-      - run: node tmp/main.js
+      - run: yarn run release:transifex-source
       - uses: softprops/action-gh-release@v1
         with:
           name: Release ${{ steps.tag_version.outputs.new_tag }}
