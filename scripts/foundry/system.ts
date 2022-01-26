@@ -1,6 +1,6 @@
 import { createWriteStream } from "fs";
 import fetch from "node-fetch";
-import { join } from "path";
+import { join } from "path/posix";
 import { Open as unzipperOpen } from "unzipper";
 import { Entry, FoundrySystemManifest } from "./types";
 
@@ -82,6 +82,7 @@ const enabledPacks = [
   "feature-effects",
   "gmg-srd",
   "hazards",
+  "heritages",
   "npc-gallery",
   "pathfinder-bestiary-2",
   "pathfinder-bestiary",
