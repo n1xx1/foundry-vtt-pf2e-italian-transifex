@@ -1,16 +1,9 @@
-import {
-  mkdir as fsMkdir,
-  rm as fsRm,
-  writeFile as fsWriteFile,
-} from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 import _ from "lodash";
-import { join as pathJoin } from "path/posix";
+import { join } from "path/posix";
 import { downloadFile, readSystemZip } from "./foundry/system";
 import { downloadManifest } from "./foundry/system";
 import { EntryActor, EntryItem, EntryJournalEntry } from "./foundry/types";
-
-const baseUrl =
-  "https://gitlab.com/hooking/foundry-vtt---pathfinder-2e/-/jobs/artifacts/master/raw";
 
 interface Compendium {
   label: string;
@@ -20,6 +13,13 @@ interface Compendium {
 
 const rangeRegex = /^(?:touch|planetary|[\d.,]+ (?:feet|miles?))$/;
 const timeRegex = /^(?:1|2|3|reaction|free|[\d.,]+ (?:minutes?|days?|hours?))$/;
+
+async function setupOut() {
+  await mkdir("tmp", { recursive: true }).catch(() => Promise.resolve());
+  await mkdir("out/compendium", { recursive: true }).catch(() =>
+    Promise.resolve()
+  );
+}
 
 async function handleItem(id: string, label: string, entries: EntryItem[]) {
   const out: Compendium = {
@@ -32,6 +32,7 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
   };
 
   let hasSpells = false;
+  let hasAncestry = false;
 
   for (const entry of entries) {
     const el: any = (out.entries[entry.name] = {
@@ -61,6 +62,20 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
         }
       }
     }
+    if (entry.type == "ancestry") {
+      hasAncestry = true;
+    }
+  }
+
+  if (hasAncestry) {
+    out.mapping!.speed = {
+      path: "data.speed",
+      converter: "pfitLength",
+    };
+    out.mapping!.speed = {
+      path: "data.reach",
+      converter: "pfitLength",
+    };
   }
 
   if (hasSpells) {
@@ -68,18 +83,16 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
     out.mapping!.target = "data.target.value";
     out.mapping!.range = {
       path: "data.range.value",
-      converter: "convertRange",
+      converter: "pfitRange",
     };
     out.mapping!.time = {
       path: "data.time.value",
-      converter: "convertTime",
+      converter: "pfitTime",
     };
   }
 
   const outData = JSON.stringify(out, null, 2);
-
-  await fsMkdir("out/compendium").catch((e) => Promise.resolve());
-  await fsWriteFile(pathJoin("out/compendium", id + ".json"), outData);
+  await writeFile(join("out/compendium", id + ".json"), outData);
 }
 
 async function handleJournalEntry(
@@ -99,9 +112,7 @@ async function handleJournalEntry(
   }
 
   const outData = JSON.stringify(out, null, 2);
-
-  await fsMkdir("out/compendium").catch((e) => Promise.resolve());
-  await fsWriteFile(pathJoin("out/compendium", id + ".json"), outData);
+  await writeFile(join("out/compendium", id + ".json"), outData);
 }
 
 const itemTypes = [
@@ -215,28 +226,28 @@ async function handleActor(
   }
   if (hasMonsters) {
     out.mapping!.description = "data.details.publicNotes";
+    out.mapping!.speed = {
+      path: "data.attributes.speed",
+      converter: "pfitSpeeds",
+    };
   }
 
   const outData = JSON.stringify(out, null, 2);
-
-  await fsMkdir("out/compendium").catch((e) => Promise.resolve());
-  await fsWriteFile(pathJoin("out/compendium", id + ".json"), outData);
+  await writeFile(join("out/compendium", id + ".json"), outData);
 }
 
 async function downloadFiles() {
   const manifest = await downloadManifest();
-  await fsMkdir("out").catch((e) => Promise.resolve());
-  await fsMkdir("tmp").catch((e) => Promise.resolve());
-  await fsRm("tmp/system.zip").catch((e) => Promise.resolve());
   await downloadFile(manifest.download, "tmp/system.zip");
   return manifest;
 }
 
 async function main() {
+  await setupOut();
   const manifest = await downloadFiles();
   const [allPacks, langData] = await readSystemZip(manifest);
 
-  await fsWriteFile("out/en.json", JSON.stringify(langData, null, 2));
+  await writeFile("out/en.json", JSON.stringify(langData, null, 2));
 
   const itemEntries = _.groupBy(
     allPacks
@@ -266,10 +277,7 @@ async function main() {
     }
   }
 
-  await fsWriteFile(
-    "tmp/changes.txt",
-    `updated to version ${manifest.version}`
-  );
+  await writeFile("tmp/changes.txt", `updated to version ${manifest.version}`);
 }
 
 main().then(console.log);

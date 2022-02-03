@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, writeFile } from "fs/promises";
 config();
 
 const resources = {
@@ -15,6 +15,7 @@ const resources = {
   conditionitems: "conditionitems",
   deities: "deities",
   "equipment-srd": "equipment-srd",
+  heritages: "heritages",
   "fall-of-plaguestone-bestiary": "fall-of-plaguestone-bestiary",
   "feats-srd": "feats",
   "npc-gallery": "npc-gallery",
@@ -44,7 +45,6 @@ const resources = {
   "night-of-the-gray-death-bestiary": null,
   vehicles: null,
   "familiar-abilities": null,
-  heritages: null,
   "bestiary-effects": null,
   domains: null,
   "boons-and-curses": null,
