@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "release:transifex-source": "esbuild --bundle --platform=node --sourcemap --outdir=tmp scripts/transifex-sources.ts && node --enable-source-maps tmp/transifex-sources",
-    "release:transifex-output": "esbuild --bundle --platform=node --sourcemap --outdir=tmp scripts/transifex-output.ts && node --enable-source-maps tmp/transifex-output"
+    "release:transifex-output": "esbuild --bundle --platform=node --sourcemap --outdir=tmp scripts/transifex-output.ts && node --enable-source-maps tmp/transifex-output",
+    "dev:update-source": "esbuild --bundle --platform=node --sourcemap --outdir=tmp scripts/update-source.ts && node --enable-source-maps tmp/update-source"
   },
   "dependencies": {
     "dotenv": "^14.2.0",

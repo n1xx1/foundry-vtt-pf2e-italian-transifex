@@ -65,7 +65,11 @@ export interface EntryNPC extends BaseEntry {
   };
 }
 
-export type EntryItem = EntryItemGeneric | EntryItemSpell | EntryItemAncestry;
+export type EntryItem =
+  | EntryItemGeneric
+  | EntryItemSpell
+  | EntryItemAncestry
+  | EntryItemFeat;
 
 export interface EntryItemGeneric extends BaseEntry {
   type: "action" | "condition" | "weapon" | "melee" | "ranged" | "lore";
@@ -94,6 +98,9 @@ export interface EntryItemFeat extends BaseEntry {
     };
     source: {
       value: string;
+    };
+    prerequisites: {
+      value: { value: string }[];
     };
   };
 }
