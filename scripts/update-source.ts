@@ -1,6 +1,6 @@
 import { join as pathJoin } from "path/posix";
 import { Open as unzipperOpen } from "unzipper";
-import { EntryItemFeat } from "./foundry/types";
+import { EntryActor, EntryItem, EntryItemFeat } from "./foundry/types";
 import fetch from "node-fetch";
 import {
   downloadFile,
@@ -16,16 +16,17 @@ async function main() {
   await downloadFile(manifest.download, "tmp/system.zip");
   // await updateTags("equipment-srd", "equipment.db");
   // await updateTags("feats", "feats.db");
+  await updateTags("age-of-ashes-bestiary", "age-of-ashes-bestiary.db");
   // await updateTags("spells", "spells.db");
   // await updateTags("classfeatures", "classfeatures.db");
-  await updateTags("pf2ebackgroundsjson", "backgrounds.db");
+  // await updateTags("pf2ebackgroundsjson", "backgrounds.db");
 }
 
 async function updateTags(resId: string, fileName: string) {
   const directory = await unzipperOpen.file("tmp/system.zip");
   const files = Object.fromEntries(directory.files.map((f) => [f.path, f]));
 
-  const feats = parseJsonStream<EntryItemFeat>(
+  const feats = parseJsonStream<EntryItemFeat | EntryActor>(
     await files[pathJoin(".", "pf2e", "packs", fileName)].buffer()
   );
   const featsMap = new Map(feats.map((f) => [f.name, f]));
@@ -45,11 +46,11 @@ async function updateTags(resId: string, fileName: string) {
     const match = key.match(/^entries\.([^\.]*)\..*$/);
     if (!match) continue;
     const [, name] = match;
-    const source = featsMap.get(name)?.data?.source?.value;
+    const origin: any = featsMap.get(name)?.data ?? {};
+    const source = origin.source?.value ?? origin?.details?.source?.value;
     const tag = getRealTag(source);
     if (tag) toUpdate.push({ id, key, tag });
-    else if (source != "")
-      console.log(`Unknown source: ${source} (item: ${name})`);
+    else if (source) console.log(`Unknown source: ${source} (item: ${name})`);
   }
 
   console.log(`not updated: ${data.length - toUpdate.length}`);
@@ -151,8 +152,10 @@ function getRealTag(source?: string) {
     case "Age of Ashes Player's Guide":
       return "age-of-ashes1";
     case "Pathfinder #145":
+    case "Pathfinder #145: Hellknight Hill":
       return "age-of-ashes1";
     case "Pathfinder #146":
+    case "Pathfinder #146: Cult of Cinders":
       return "age-of-ashes2";
     case "Pathfinder #147":
     case "Pathfinder #147: Tomorrow Must Burn":
@@ -280,6 +283,7 @@ function getRealTag(source?: string) {
     case "Pathfinder #172":
       return "strength-of-thousands4";
     case "Pathfinder: Quest for the Frozen Flame Player's Guide":
+    case "Pathfinder #175: Broken Tusk Moon":
       return "quest-for-the-frozen-flame1";
     // ADVENTURE
     case "The Slithering":

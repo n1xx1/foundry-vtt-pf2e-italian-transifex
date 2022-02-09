@@ -52,6 +52,7 @@ export interface EntryHazard extends BaseEntry {
       reset: string;
       routine: string;
     };
+    source: { value: string };
   };
 }
 
@@ -61,6 +62,7 @@ export interface EntryNPC extends BaseEntry {
   data: {
     details: {
       publicNotes: string;
+      source: { value: string };
     };
   };
 }

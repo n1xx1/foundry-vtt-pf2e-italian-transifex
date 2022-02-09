@@ -60,6 +60,7 @@ export function parseJsonStream<T>(stream: Buffer) {
 const enabledPacks = [
   "actionspf2e",
   "age-of-ashes-bestiary",
+  "agents-of-edgewatch-bestiary",
   "ancestries",
   "ancestryfeatures",
   "archetypes",
@@ -73,6 +74,7 @@ const enabledPacks = [
   "conditionitems",
   "consumable-effects",
   "deities",
+  "domains",
   "equipment-effects",
   "equipment-srd",
   "fall-of-plaguestone-bestiary",
