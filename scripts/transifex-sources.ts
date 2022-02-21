@@ -260,8 +260,9 @@ async function downloadFiles() {
 async function main() {
   await setupOut();
   const manifest = await downloadFiles();
-  const [allPacks, langData] = await readSystemZip(manifest);
+  const [allPacks, allLangs] = await readSystemZip(manifest);
 
+  const langData = _.merge({}, ...allLangs);
   await writeFile("out/en.json", JSON.stringify(langData, null, 2));
 
   const itemEntries = _.groupBy(
