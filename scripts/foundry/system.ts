@@ -4,11 +4,11 @@ import { join } from "path/posix";
 import { Open as unzipperOpen } from "unzipper";
 import { Entry, FoundrySystemManifest } from "./types";
 
-const baseUrl =
-  "https://gitlab.com/hooking/foundry-vtt---pathfinder-2e/-/jobs/artifacts/master/raw";
+const manifestUrl =
+  "https://github.com/foundryvtt/pf2e/releases/download/latest/system.json";
 
 export async function downloadManifest(): Promise<FoundrySystemManifest> {
-  const resp = await fetch(`${baseUrl}/system.json?job=build`);
+  const resp = await fetch(manifestUrl);
   const data = await resp.text();
   return JSON.parse(data);
 }
