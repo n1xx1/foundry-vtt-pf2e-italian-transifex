@@ -27,9 +27,6 @@ export async function readSystemZip(manifest: FoundrySystemManifest) {
   const directory = await unzipperOpen.file("tmp/system.zip");
   const files = Object.fromEntries(directory.files.map((f) => [f.path, f]));
 
-  const langFile = await files[join(".", "pf2e", "lang", "en.json")].buffer();
-  const langData = JSON.parse(langFile.toString("utf-8"));
-
   return [
     await Promise.all(
       manifest.packs
@@ -45,7 +42,19 @@ export async function readSystemZip(manifest: FoundrySystemManifest) {
           return { ...pack, entries: data };
         })
     ),
-    langData,
+    await Promise.all(
+      manifest.languages
+        .map((lang) => {
+          const path = join(".", "pf2e", lang.path);
+          const file = files[path];
+          return [lang, file] as const;
+        })
+        .filter(([lang, file]) => file && lang.lang === "en")
+        .map(async ([lang, file]) => {
+          const stream = await file.buffer();
+          return JSON.parse(stream.toString("utf-8"));
+        })
+    ),
   ] as const;
 }
 
@@ -60,6 +69,7 @@ export function parseJsonStream<T>(stream: Buffer) {
 const enabledPacks = [
   "actionspf2e",
   "age-of-ashes-bestiary",
+  "agents-of-edgewatch-bestiary",
   "ancestries",
   "ancestryfeatures",
   "archetypes",
@@ -73,6 +83,7 @@ const enabledPacks = [
   "conditionitems",
   "consumable-effects",
   "deities",
+  "domains",
   "equipment-effects",
   "equipment-srd",
   "fall-of-plaguestone-bestiary",

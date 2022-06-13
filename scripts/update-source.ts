@@ -1,25 +1,32 @@
 import { join as pathJoin } from "path/posix";
 import { Open as unzipperOpen } from "unzipper";
-import { EntryItemFeat } from "./foundry/types";
+import { EntryActor, EntryItem, EntryItemFeat } from "./foundry/types";
 import fetch from "node-fetch";
-import { parseJsonStream } from "./foundry/system";
+import {
+  downloadFile,
+  downloadManifest,
+  parseJsonStream,
+} from "./foundry/system";
 
 const TRANSIFEX_TOKEN = process.env.TTOKEN ?? "?";
 const TRANSIFEX_URL = "https://rest.api.transifex.com";
 
 async function main() {
-  //const manifest = await downloadFiles();
+  const manifest = await downloadManifest();
+  await downloadFile(manifest.download, "tmp/system.zip");
   // await updateTags("equipment-srd", "equipment.db");
   // await updateTags("feats", "feats.db");
+  await updateTags("age-of-ashes-bestiary", "age-of-ashes-bestiary.db");
   // await updateTags("spells", "spells.db");
   // await updateTags("classfeatures", "classfeatures.db");
+  // await updateTags("pf2ebackgroundsjson", "backgrounds.db");
 }
 
 async function updateTags(resId: string, fileName: string) {
   const directory = await unzipperOpen.file("tmp/system.zip");
   const files = Object.fromEntries(directory.files.map((f) => [f.path, f]));
 
-  const feats = parseJsonStream<EntryItemFeat>(
+  const feats = parseJsonStream<EntryItemFeat | EntryActor>(
     await files[pathJoin(".", "pf2e", "packs", fileName)].buffer()
   );
   const featsMap = new Map(feats.map((f) => [f.name, f]));
@@ -39,11 +46,11 @@ async function updateTags(resId: string, fileName: string) {
     const match = key.match(/^entries\.([^\.]*)\..*$/);
     if (!match) continue;
     const [, name] = match;
-    const source = featsMap.get(name)?.data?.source?.value;
+    const origin: any = featsMap.get(name)?.data ?? {};
+    const source = origin.source?.value ?? origin?.details?.source?.value;
     const tag = getRealTag(source);
     if (tag) toUpdate.push({ id, key, tag });
-    else if (source != "")
-      console.log(`Unknown source: ${source} (item: ${name})`);
+    else if (source) console.log(`Unknown source: ${source} (item: ${name})`);
   }
 
   console.log(`not updated: ${data.length - toUpdate.length}`);
@@ -123,6 +130,12 @@ function getRealTag(source?: string) {
     case "Gamemastery Guide":
     case "Pathfinder Gamemastery Guide":
       return "gamemastery-guide";
+    case "Bestiary 2":
+    case "Pathfinder Bestiary 2":
+      return "bestiary2";
+    case "Advanced Player's Guide":
+    case "Pathfinder Advanced Player's Guide":
+      return "advanced-players-guide";
     // LOST OMENS
     case "Character Guide":
     case "Pathfinder Lost Omens: Character Guide":
@@ -135,9 +148,14 @@ function getRealTag(source?: string) {
     case "Pathfinder Lost Omens: Gods & Magic":
       return "gods-and-magic";
     // ADVENTURE PATH
+    case "Pathfinder: Age of Ashes Player's Guide":
+    case "Age of Ashes Player's Guide":
+      return "age-of-ashes1";
     case "Pathfinder #145":
+    case "Pathfinder #145: Hellknight Hill":
       return "age-of-ashes1";
     case "Pathfinder #146":
+    case "Pathfinder #146: Cult of Cinders":
       return "age-of-ashes2";
     case "Pathfinder #147":
     case "Pathfinder #147: Tomorrow Must Burn":
@@ -151,6 +169,8 @@ function getRealTag(source?: string) {
     case "Pathfinder #150":
     case "Pathfinder #150: Broken Promises":
       return "age-of-ashes6";
+    case "Pathfinder: Agents of Edgewatch Player's Guide":
+    case "Agents of Edgewatch Player's Guide":
     case "Pathfinder #157":
     case "Pathfinder #157: Devil at the Dreaming Palace":
       return "agents-of-edgewatch1";
@@ -176,19 +196,12 @@ function getRealTag(source?: string) {
 
     // NON TRADOTTI
     // CORE
-    case "Bestiary 2":
-    case "Pathfinder Bestiary 2":
-      return "bestiary2";
     case "Bestiary 3":
     case "Pathfinder Bestiary 3":
       return "bestiary3";
-    case "Advanced Player's Guide":
-    case "Pathfinder Advanced Player's Guide":
-      return "advanced-players-guide";
+    case "Pathfinder Beginner Box: Hero's Handbook":
     case "Pathfinder Beginner Box":
       return "beginner-box";
-    case "Bestiary 3":
-      return "bestiary3";
     case "Secrets of Magic":
     case "Pathfinder Secrets of Magic":
       return "secrets-of-magic";
@@ -215,6 +228,7 @@ function getRealTag(source?: string) {
     case "Pathfinder Lost Omens: Grand Bazaar":
       return "grand-bazaar";
     // ADVENTURE PATH
+    case "Pathfinder: Extinction Curse Player's Guide":
     case "Pathfinder #151":
     case "Pathfinder #151: The Show Must Go On":
       return "extinction-curse1";
@@ -234,6 +248,8 @@ function getRealTag(source?: string) {
     case "Pathfinder #156":
     case "Pathfinder #156: The Apocalypse Prophet":
       return "extinction-curse6";
+    case "Abomination Vaults Player's Guide":
+    case "Pathfinder: Abomination Vaults Player's Guide":
     case "Pathfinder #163":
     case "Pathfinder #163: Ruins of Gauntlight":
       return "abomination-vaults1";
@@ -244,6 +260,7 @@ function getRealTag(source?: string) {
     case "Patfinder #165: Eyes of Empty Death":
     case "Pathfinder #165: Eyes of Empty Death":
       return "abomination-vaults3";
+    case "Pathfinder: Fists of the Ruby Phoenix Player's Guide":
     case "Pathfinder #166":
     case "Pathfinder #166: Despair on Danger Island":
       return "fists-of-the-ruby-phoenix1";
@@ -254,6 +271,7 @@ function getRealTag(source?: string) {
     case "Patfinder #168: King of the Mountain":
     case "Pathfinder #168: King of the Mountain":
       return "fists-of-the-ruby-phoenix3";
+    case "Strength of Thousands Player's Guide":
     case "Pathfinder #169":
     case "Pathfinder #169: Kindled Magic":
       return "strength-of-thousands1";
@@ -264,6 +282,9 @@ function getRealTag(source?: string) {
       return "strength-of-thousands3";
     case "Pathfinder #172":
       return "strength-of-thousands4";
+    case "Pathfinder: Quest for the Frozen Flame Player's Guide":
+    case "Pathfinder #175: Broken Tusk Moon":
+      return "quest-for-the-frozen-flame1";
     // ADVENTURE
     case "The Slithering":
     case "Pathfinder Adventure: The Slithering":

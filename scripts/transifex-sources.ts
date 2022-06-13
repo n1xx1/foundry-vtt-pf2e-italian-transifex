@@ -31,6 +31,7 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
     entries: {},
   };
 
+  let hasFeats = false;
   let hasSpells = false;
   let hasAncestry = false;
 
@@ -62,8 +63,17 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
         }
       }
     }
-    if (entry.type == "ancestry") {
+    if (entry.type === "ancestry") {
       hasAncestry = true;
+    }
+    if (entry.type === "feat") {
+      hasFeats = true;
+      const prerequisites = entry.data.prerequisites?.value ?? [];
+      if (prerequisites.length > 0) {
+        el.prerequisites = Object.fromEntries(
+          entry.data.prerequisites.value.map((v, i) => [i, v.value])
+        );
+      }
     }
   }
 
@@ -77,7 +87,12 @@ async function handleItem(id: string, label: string, entries: EntryItem[]) {
       converter: "pfitLength",
     };
   }
-
+  if (hasFeats) {
+    out.mapping!.prerequisites = {
+      path: "data.prerequisites.value",
+      converter: "pfitArray",
+    };
+  }
   if (hasSpells) {
     out.mapping!.materials = "data.materials.value";
     out.mapping!.target = "data.target.value";
@@ -245,8 +260,9 @@ async function downloadFiles() {
 async function main() {
   await setupOut();
   const manifest = await downloadFiles();
-  const [allPacks, langData] = await readSystemZip(manifest);
+  const [allPacks, allLangs] = await readSystemZip(manifest);
 
+  const langData = _.merge({}, ...allLangs);
   await writeFile("out/en.json", JSON.stringify(langData, null, 2));
 
   const itemEntries = _.groupBy(
