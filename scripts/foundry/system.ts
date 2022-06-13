@@ -31,7 +31,7 @@ export async function readSystemZip(manifest: FoundrySystemManifest) {
     await Promise.all(
       manifest.packs
         .map((pack) => {
-          const path = join(".", "pf2e", pack.path);
+          const path = join(".", pack.path);
           const file = files[path];
           return [pack, file] as const;
         })
@@ -45,7 +45,7 @@ export async function readSystemZip(manifest: FoundrySystemManifest) {
     await Promise.all(
       manifest.languages
         .map((lang) => {
-          const path = join(".", "pf2e", lang.path);
+          const path = join(".", lang.path);
           const file = files[path];
           return [lang, file] as const;
         })
